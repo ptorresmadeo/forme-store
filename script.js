@@ -131,3 +131,50 @@ function actualizarCarrito() {
 
 // Mostrar productos him por defecto
 setCategoria('him');
+// VALIDACIÓN DEL FORMULARIO
+document.getElementById('form-contacto').addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const nombre = document.getElementById('nombre').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const mensaje = document.getElementById('mensaje').value.trim();
+
+  let valido = true;
+
+  // Validar nombre
+  if (nombre === '') {
+    document.getElementById('error-nombre').textContent = 'El nombre es obligatorio.';
+    valido = false;
+  } else {
+    document.getElementById('error-nombre').textContent = '';
+  }
+
+  // Validar email
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (email === '') {
+    document.getElementById('error-email').textContent = 'El email es obligatorio.';
+    valido = false;
+  } else if (!emailRegex.test(email)) {
+    document.getElementById('error-email').textContent = 'Ingresá un email válido.';
+    valido = false;
+  } else {
+    document.getElementById('error-email').textContent = '';
+  }
+
+  // Validar mensaje
+  if (mensaje === '') {
+    document.getElementById('error-mensaje').textContent = 'El mensaje es obligatorio.';
+    valido = false;
+  } else if (mensaje.length < 10) {
+    document.getElementById('error-mensaje').textContent = 'El mensaje debe tener al menos 10 caracteres.';
+    valido = false;
+  } else {
+    document.getElementById('error-mensaje').textContent = '';
+  }
+
+  // Si todo está bien
+  if (valido) {
+    alert('¡Mensaje enviado! Nos contactamos pronto.');
+    document.getElementById('form-contacto').reset();
+  }
+});
