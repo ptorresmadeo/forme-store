@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forme Store</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <!-- LOADING SCREEN -->
+    <div class="loader" id="loader" aria-hidden="true">
+      <div class="loader-star">★</div>
+    </div>
+
+    <!-- NAVEGACIÓN -->
+    <header class="navbar" role="banner">
+      <div class="logo">
+        <span class="logo-star" aria-hidden="true">★</span>
+        <span>for<strong>me</strong></span>
+      </div>
+      <nav role="navigation" aria-label="Menú principal">
+        <ul>
+          <li><a href="#productos">DROP</a></li>
+          <li><a href="#productos">STORE</a></li>
+          <li><a href="#contacto">CONTACTO</a></li>
+          <li>
+            <a href="#carrito" aria-label="Carrito de compras">
+              CART (<span id="cart-count">0</span>)
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero" aria-label="Sección principal">
+        <div class="hero-content">
+          <div class="drop-tag">
+            <span class="dot"></span>DROP 004 — LIVE NOW
+          </div>
+          <div class="hero-star" aria-hidden="true">★</div>
+          <h1>FOR<span>ME</span></h1>
+          <p class="hero-sub">LIMITADO · LOCAL · 2026</p>
+          <div class="hero-btns">
+            <a href="#productos" class="btn-primary">VER DROP</a>
+            <a href="#contacto" class="btn-ghost">CONTACTO</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- MARQUEE -->
+      <div class="marquee-wrap" aria-hidden="true">
+        <div class="marquee">
+          <span>NUEVO DROP ★ ENVÍO GRATIS +$5000 ★ STOCK LIMITADO ★ HECHO EN ARG ★ NUEVO DROP ★ ENVÍO GRATIS +$5000 ★ STOCK LIMITADO ★ HECHO EN ARG ★</span>
+        </div>
+      </div>
+
+      <!-- PRODUCTOS -->
+      <section class="productos" id="productos" aria-label="Catálogo de productos">
+        <div class="section-header">
+          <h2>LATEST DROP</h2>
+          <span>VER TODO →</span>
+        </div>
+        <div class="productos-grid" id="productos-grid">
+          <!-- Los productos se generan con JavaScript -->
+        </div>
+      </section>
+
+      <!-- CARRITO -->
+      <section class="carrito" id="carrito" aria-label="Carrito de compras">
+        <h2>TU CARRITO</h2>
+        <div id="carrito-items">
+          <p class="carrito-vacio">Tu carrito está vacío.</p>
+        </div>
+        <p class="carrito-total">TOTAL: $<span id="total">0</span></p>
+      </section>
+
+      <!-- CONTACTO -->
+      <section class="contacto" id="contacto" aria-label="Formulario de contacto">
+        <h2>CONTACTO</h2>
+        <form id="form-contacto" novalidate>
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+            <span class="error" id="error-nombre"></span>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="tu@email.com" required />
+            <span class="error" id="error-email"></span>
+          </div>
+          <div class="form-group">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" placeholder="Tu mensaje..." required></textarea>
+            <span class="error" id="error-mensaje"></span>
+          </div>
+          <button type="submit" class="btn-primary">ENVIAR</button>
+        </form>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+      <div class="footer-brand">
+        <span aria-hidden="true">★</span>
+        <span>FORME © 2026</span>
+      </div>
+      <div class="footer-links">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="TikTok">TK</a>
+        <a href="#" aria-label="WhatsApp">WA</a>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
