@@ -6,17 +6,20 @@
 }
 
 :root {
-  --azul: #3a6fd8;
-  --negro: #0a0a0f;
-  --negro-card: #0e0e1a;
-  --borde: #1e1e2e;
-  --gris: #888;
+  --azul: #1a3a6b;
+  --azul-medio: #3a6fd8;
   --blanco: #ffffff;
+  --gris-claro: #f5f5f0;
+  --gris: #888;
+  --negro: #0a0a0f;
+  --borde: #ddd;
+  --tartan-azul: #2a5298;
+  --tartan-negro: #1a1a2e;
 }
 
 body {
-  background-color: var(--negro);
-  color: var(--blanco);
+  background-color: var(--blanco);
+  color: var(--negro);
   font-family: 'Helvetica Neue', Arial, sans-serif;
   overflow-x: hidden;
 }
@@ -25,7 +28,7 @@ body {
 .loader {
   position: fixed;
   inset: 0;
-  background: var(--negro);
+  background: var(--blanco);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,15 +36,14 @@ body {
   transition: opacity 0.5s ease;
 }
 
-.loader-star {
-  font-size: 60px;
-  color: var(--azul);
-  animation: loader-spin 1s ease-in-out infinite alternate;
+.loader-logo {
+  width: 160px;
+  animation: loader-float 0.8s ease-in-out infinite alternate;
 }
 
-@keyframes loader-spin {
-  from { transform: scale(1) rotate(0deg); }
-  to   { transform: scale(1.3) rotate(20deg); }
+@keyframes loader-float {
+  from { transform: scale(1) rotate(-5deg); }
+  to   { transform: scale(1.15) rotate(5deg); }
 }
 
 .loader.oculto {
@@ -54,7 +56,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--negro);
+  background: var(--blanco);
   border-bottom: 1px solid var(--borde);
   padding: 14px 40px;
   display: flex;
@@ -65,15 +67,17 @@ body {
 .logo {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 18px;
+  gap: 10px;
+  font-size: 14px;
   letter-spacing: 2px;
+  color: var(--azul);
+  font-weight: 500;
 }
 
-.logo-star {
-  color: var(--azul);
-  font-size: 22px;
-  display: inline-block;
+.logo-img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
   animation: holo 4s linear infinite;
 }
 
@@ -108,20 +112,26 @@ nav ul li a:hover {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: #0d0d1a;
+  background: var(--gris-claro);
   position: relative;
   overflow: hidden;
 }
 
+/* TARTAN DE FONDO */
 .hero::before {
   content: '';
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(var(--borde) 1px, transparent 1px),
-    linear-gradient(90deg, var(--borde) 1px, transparent 1px);
-  background-size: 32px 32px;
-  opacity: 0.4;
+    linear-gradient(var(--tartan-azul) 2px, transparent 2px),
+    linear-gradient(90deg, var(--tartan-azul) 2px, transparent 2px),
+    linear-gradient(var(--tartan-negro) 1px, transparent 1px),
+    linear-gradient(90deg, var(--tartan-negro) 1px, transparent 1px);
+  background-size: 60px 60px, 60px 60px, 20px 20px, 20px 20px;
+  opacity: 0.06;
+  will-change: transform;
+  transition: transform 0.1s linear;
+  transform: translateY(var(--parallax-y, 0));
 }
 
 .hero-content {
@@ -155,17 +165,16 @@ nav ul li a:hover {
   50%       { opacity: 0.3; transform: scale(0.6); }
 }
 
-.hero-star {
-  font-size: 90px;
-  color: var(--azul);
+.hero-logo {
+  width: 180px;
   display: block;
-  margin-bottom: 8px;
+  margin: 0 auto 16px;
   animation: float 3s ease-in-out infinite;
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50%       { transform: translateY(-12px) rotate(12deg); }
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50%       { transform: translateY(-14px) rotate(3deg); }
 }
 
 h1 {
@@ -173,10 +182,11 @@ h1 {
   font-weight: 500;
   letter-spacing: 8px;
   margin-bottom: 8px;
+  color: var(--azul);
 }
 
 h1 span {
-  color: var(--azul);
+  color: var(--azul-medio);
 }
 
 .hero-sub {
@@ -212,8 +222,8 @@ h1 span {
 
 .btn-ghost {
   background: transparent;
-  color: var(--gris);
-  border: 1px solid var(--borde);
+  color: var(--azul);
+  border: 1px solid var(--azul);
   padding: 12px 28px;
   font-size: 11px;
   letter-spacing: 2px;
@@ -221,19 +231,17 @@ h1 span {
   border-radius: 3px;
   text-decoration: none;
   display: inline-block;
-  transition: border-color 0.2s, color 0.2s;
+  transition: background 0.2s, color 0.2s;
 }
 
 .btn-ghost:hover {
-  border-color: var(--azul);
-  color: var(--azul);
+  background: var(--azul);
+  color: var(--blanco);
 }
 
 /* ===== MARQUEE ===== */
 .marquee-wrap {
-  background: #0d1020;
-  border-top: 1px solid var(--borde);
-  border-bottom: 1px solid var(--borde);
+  background: var(--azul);
   padding: 10px 0;
   overflow: hidden;
 }
@@ -244,7 +252,7 @@ h1 span {
   animation: scroll 18s linear infinite;
   font-size: 10px;
   letter-spacing: 3px;
-  color: var(--azul);
+  color: var(--blanco);
 }
 
 @keyframes scroll {
@@ -252,9 +260,58 @@ h1 span {
   to   { transform: translateX(-50%); }
 }
 
+/* ===== CATEGORIAS FOR HIM / FOR HER ===== */
+.categorias {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--borde);
+}
+
+.cat-btn {
+  flex: 1;
+  padding: 28px;
+  background: var(--blanco);
+  border: none;
+  border-right: 1px solid var(--borde);
+  cursor: pointer;
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: var(--gris);
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.cat-btn:last-child {
+  border-right: none;
+}
+
+.cat-btn:hover {
+  background: var(--gris-claro);
+  color: var(--azul);
+}
+
+.cat-btn.activo {
+  background: var(--azul);
+  color: var(--blanco);
+}
+
+/* TARTAN en botón activo */
+.cat-btn.activo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
 /* ===== PRODUCTOS ===== */
 .productos {
   padding: 60px 40px;
+  background: var(--blanco);
 }
 
 .section-header {
@@ -268,11 +325,12 @@ h1 span {
   font-size: 13px;
   letter-spacing: 4px;
   font-weight: 500;
+  color: var(--azul);
 }
 
 .section-header span {
   font-size: 10px;
-  color: var(--azul);
+  color: var(--azul-medio);
   cursor: pointer;
 }
 
@@ -284,17 +342,18 @@ h1 span {
 
 /* ===== CARD DE PRODUCTO ===== */
 .producto-card {
-  background: var(--negro-card);
+  background: var(--blanco);
   border: 1px solid var(--borde);
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
-  transition: border-color 0.2s, transform 0.2s;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
 .producto-card:hover {
   border-color: var(--azul);
   transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(26, 58, 107, 0.1);
 }
 
 .producto-img {
@@ -302,9 +361,21 @@ h1 span {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #111122;
+  background: var(--gris-claro);
   font-size: 64px;
   position: relative;
+}
+
+/* TARTAN en imagen de producto */
+.producto-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--tartan-azul) 1px, transparent 1px),
+    linear-gradient(90deg, var(--tartan-azul) 1px, transparent 1px);
+  background-size: 30px 30px;
+  opacity: 0.04;
 }
 
 .producto-badge {
@@ -317,10 +388,11 @@ h1 span {
   letter-spacing: 1px;
   padding: 3px 8px;
   border-radius: 2px;
+  z-index: 1;
 }
 
 .producto-badge.sold {
-  background: #333;
+  background: var(--borde);
   color: var(--gris);
 }
 
@@ -332,6 +404,7 @@ h1 span {
   font-size: 13px;
   font-weight: 500;
   margin-bottom: 4px;
+  color: var(--negro);
 }
 
 .producto-precio {
@@ -384,12 +457,14 @@ h1 span {
 .carrito {
   padding: 60px 40px;
   border-top: 1px solid var(--borde);
+  background: var(--gris-claro);
 }
 
 .carrito h2 {
   font-size: 13px;
   letter-spacing: 4px;
   margin-bottom: 24px;
+  color: var(--azul);
 }
 
 .carrito-vacio {
@@ -411,6 +486,7 @@ h1 span {
   font-size: 14px;
   letter-spacing: 2px;
   color: var(--azul);
+  font-weight: 500;
 }
 
 /* ===== CONTACTO ===== */
@@ -424,6 +500,7 @@ h1 span {
   font-size: 13px;
   letter-spacing: 4px;
   margin-bottom: 32px;
+  color: var(--azul);
 }
 
 .form-group {
@@ -441,9 +518,9 @@ h1 span {
 .form-group input,
 .form-group textarea {
   width: 100%;
-  background: var(--negro-card);
+  background: var(--blanco);
   border: 1px solid var(--borde);
-  color: var(--blanco);
+  color: var(--negro);
   padding: 12px;
   font-size: 13px;
   border-radius: 3px;
@@ -463,7 +540,7 @@ h1 span {
 
 .error {
   display: block;
-  color: #e24b4a;
+  color: #c0392b;
   font-size: 11px;
   margin-top: 4px;
   min-height: 16px;
@@ -471,25 +548,26 @@ h1 span {
 
 /* ===== FOOTER ===== */
 footer {
-  background: #07070f;
-  padding: 20px 40px;
+  background: var(--azul);
+  padding: 24px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid var(--borde);
 }
 
 .footer-brand {
   display: flex;
   align-items: center;
-  gap: 8px;
-  color: #444;
+  gap: 10px;
+  color: rgba(255,255,255,0.6);
   font-size: 10px;
   letter-spacing: 2px;
 }
 
-.footer-brand span:first-child {
-  color: var(--azul);
+.footer-logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
 }
 
 .footer-links {
@@ -498,7 +576,7 @@ footer {
 }
 
 .footer-links a {
-  color: #444;
+  color: rgba(255,255,255,0.5);
   font-size: 10px;
   letter-spacing: 2px;
   text-decoration: none;
@@ -506,7 +584,19 @@ footer {
 }
 
 .footer-links a:hover {
-  color: var(--azul);
+  color: var(--blanco);
+}
+
+/* ===== TARTAN SECTION ===== */
+.tartan-divider {
+  height: 12px;
+  background-image:
+    linear-gradient(var(--tartan-azul) 2px, transparent 2px),
+    linear-gradient(90deg, var(--tartan-azul) 2px, transparent 2px),
+    linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px);
+  background-size: 20px 20px, 20px 20px, 6px 6px, 6px 6px;
+  background-color: var(--tartan-negro);
 }
 
 /* ===== RESPONSIVE ===== */
@@ -523,8 +613,8 @@ footer {
     font-size: 48px;
   }
 
-  .hero-star {
-    font-size: 60px;
+  .hero-logo {
+    width: 120px;
   }
 
   .productos {
@@ -539,4 +629,24 @@ footer {
   footer {
     padding: 16px 20px;
   }
+
+  .categorias {
+    flex-direction: column;
+  }
+
+  .cat-btn {
+    border-right: none;
+    border-bottom: 1px solid var(--borde);
+  }
+}
+/* ===== SCROLL REVEAL ===== */
+.producto-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.2s, box-shadow 0.2s;
+}
+
+.producto-card.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
