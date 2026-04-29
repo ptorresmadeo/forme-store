@@ -21,10 +21,16 @@ function observarCards() {
 }
 
 // PARALLAX EN EL HERO
+// EFECTO SCROLL - estilo Nude Project
 window.addEventListener('scroll', () => {
-  const heroBefore = document.querySelector('.hero');
+  const heroContent = document.getElementById('hero-content');
   const scrollY = window.scrollY;
-  heroBefore.style.setProperty('--parallax-y', `${scrollY * 0.3}px`);
+
+  if (scrollY > 80) {
+    heroContent.classList.add('scrolled');
+  } else {
+    heroContent.classList.remove('scrolled');
+  }
 });
 
 // CATEGORIAS FOR HIM / FOR HER

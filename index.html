@@ -35,20 +35,24 @@
 
     <main>
       <!-- HERO -->
-      <section class="hero" aria-label="Sección principal">
-        <div class="hero-content">
-          <div class="drop-tag">
-            <span class="dot"></span>DROP 004 — LIVE NOW
-          </div>
-          <img src="images/logo.png" alt="" class="hero-logo" aria-hidden="true" />
-          <h1>FOR <span>ME</span></h1>
-          <p class="hero-sub">LIMITADO · LOCAL · 2026</p>
-          <div class="hero-btns">
-            <a href="#categorias" class="btn-primary">VER DROP</a>
-            <a href="#contacto" class="btn-ghost">CONTACTO</a>
-          </div>
-        </div>
-      </section>
+<section class="hero" aria-label="Sección principal">
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="images/hero.mp4" type="video/mp4" />
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content" id="hero-content">
+    <div class="drop-tag">
+      <span class="dot"></span>DROP 004 — LIVE NOW
+    </div>
+    <img src="images/logo.png" alt="" class="hero-logo" aria-hidden="true" id="hero-logo" />
+    <h1 id="hero-title">FOR <span>ME</span></h1>
+    <p class="hero-sub">LIMITADO · LOCAL · 2026</p>
+    <div class="hero-btns">
+      <a href="#categorias" class="btn-primary">VER DROP</a>
+      <a href="#contacto" class="btn-ghost">CONTACTO</a>
+    </div>
+  </div>
+</section>
 
       <!-- MARQUEE -->
       <div class="marquee-wrap" aria-hidden="true">
