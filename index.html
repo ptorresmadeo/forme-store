@@ -3,25 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Forme Store</title>
+    <title>For Me Studios</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
 
   <body>
     <!-- LOADING SCREEN -->
     <div class="loader" id="loader" aria-hidden="true">
-      <div class="loader-star">★</div>
+      <img src="images/logo.png" alt="For Me Studios logo" class="loader-logo" />
     </div>
 
-    <!-- NAVEGACIÓN -->
+    <!-- NAVBAR -->
     <header class="navbar" role="banner">
       <div class="logo">
-        <span class="logo-star" aria-hidden="true">★</span>
-        <span>for<strong>me</strong></span>
+        <img src="images/logo.png" alt="For Me Studios" class="logo-img" />
+        <span>FOR ME <strong>STUDIOS</strong></span>
       </div>
       <nav role="navigation" aria-label="Menú principal">
         <ul>
-          <li><a href="#productos">DROP</a></li>
+          <li><a href="#categorias">DROP</a></li>
           <li><a href="#productos">STORE</a></li>
           <li><a href="#contacto">CONTACTO</a></li>
           <li>
@@ -35,27 +35,41 @@
 
     <main>
       <!-- HERO -->
-      <section class="hero" aria-label="Sección principal">
-        <div class="hero-content">
-          <div class="drop-tag">
-            <span class="dot"></span>DROP 004 — LIVE NOW
-          </div>
-          <div class="hero-star" aria-hidden="true">★</div>
-          <h1>FOR<span>ME</span></h1>
-          <p class="hero-sub">LIMITADO · LOCAL · 2026</p>
-          <div class="hero-btns">
-            <a href="#productos" class="btn-primary">VER DROP</a>
-            <a href="#contacto" class="btn-ghost">CONTACTO</a>
-          </div>
-        </div>
-      </section>
+<section class="hero" aria-label="Sección principal">
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="images/hero.mp4" type="video/mp4" />
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content" id="hero-content">
+    <div class="drop-tag">
+      <span class="dot"></span>DROP 004 — LIVE NOW
+    </div>
+    <img src="images/logo.png" alt="" class="hero-logo" aria-hidden="true" id="hero-logo" />
+    <h1 id="hero-title">FOR <span>ME</span></h1>
+    <p class="hero-sub">LIMITADO · LOCAL · 2026</p>
+    <div class="hero-btns">
+      <a href="#categorias" class="btn-primary">VER DROP</a>
+      <a href="#contacto" class="btn-ghost">CONTACTO</a>
+    </div>
+  </div>
+</section>
 
       <!-- MARQUEE -->
       <div class="marquee-wrap" aria-hidden="true">
         <div class="marquee">
-          <span>NUEVO DROP ★ ENVÍO GRATIS +$5000 ★ STOCK LIMITADO ★ HECHO EN ARG ★ NUEVO DROP ★ ENVÍO GRATIS +$5000 ★ STOCK LIMITADO ★ HECHO EN ARG ★</span>
+          <span>NUEVO DROP ✦ ENVÍO GRATIS +$5000 ✦ STOCK LIMITADO ✦ HECHO EN ARG ✦ NUEVO DROP ✦ ENVÍO GRATIS +$5000 ✦ STOCK LIMITADO ✦ HECHO EN ARG ✦</span>
         </div>
       </div>
+
+      <!-- FOR HIM / FOR HER -->
+      <section class="categorias" id="categorias" aria-label="Categorías">
+        <button class="cat-btn" id="btn-him" onclick="setCategoria('him')">
+          <span class="cat-label">FOR HIM</span>
+        </button>
+        <button class="cat-btn" id="btn-her" onclick="setCategoria('her')">
+          <span class="cat-label">FOR HER</span>
+        </button>
+      </section>
 
       <!-- PRODUCTOS -->
       <section class="productos" id="productos" aria-label="Catálogo de productos">
@@ -104,8 +118,8 @@
     <!-- FOOTER -->
     <footer role="contentinfo">
       <div class="footer-brand">
-        <span aria-hidden="true">★</span>
-        <span>FORME © 2026</span>
+        <img src="images/logo.png" alt="" class="footer-logo" aria-hidden="true" />
+        <span>FOR ME STUDIOS © 2026</span>
       </div>
       <div class="footer-links">
         <a href="#" aria-label="Instagram">IG</a>
