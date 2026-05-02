@@ -710,3 +710,35 @@ footer {
   opacity: 1;
   transform: translateY(0);
 }
+/* ===== TRANSICIÓN CATÁLOGO ===== */
+.transicion-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9998;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.transicion-logo {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  transform: scale(1);
+  transition: transform 0.6s ease, opacity 0.3s ease;
+}
+
+.transicion-overlay.activa {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.transicion-overlay.zoom {
+  background: rgba(255, 255, 255, 0);
+}
+
+.transicion-logo.zoom {
+  transform: scale(100);
+}
