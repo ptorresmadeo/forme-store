@@ -37,17 +37,43 @@ window.addEventListener('scroll', () => {
 function setCategoria(categoria) {
   const btnHim = document.getElementById('btn-him');
   const btnHer = document.getElementById('btn-her');
+  const overlay = document.getElementById('transicion-overlay');
+  const logoTransicion = document.getElementById('transicion-logo');
 
-  btnHim.classList.remove('activo');
-  btnHer.classList.remove('activo');
+  // Poner el logo correcto
+  logoTransicion.src = categoria === 'him' ? 'images/logo-him.png' : 'images/logo-her.png';
 
-  if (categoria === 'him') {
-    btnHim.classList.add('activo');
-  } else {
-    btnHer.classList.add('activo');
-  }
+  // Mostrar overlay
+  overlay.classList.add('activa');
 
-  renderProductos(categoria);
+  // Zoom in
+  setTimeout(() => {
+    logoTransicion.classList.add('zoom');
+  }, 50);
+
+  // Zoom out y mostrar catálogo
+  setTimeout(() => {
+    logoTransicion.classList.remove('zoom');
+  }, 700);
+
+  // Ocultar overlay y actualizar catálogo
+  setTimeout(() => {
+    overlay.classList.remove('activa');
+
+    btnHim.classList.remove('activo');
+    btnHer.classList.remove('activo');
+
+    if (categoria === 'him') {
+      btnHim.classList.add('activo');
+    } else {
+      btnHer.classList.add('activo');
+    }
+
+    renderProductos(categoria);
+
+    // Scroll suave al catálogo
+    document.getElementById('productos').scrollIntoView({ behavior: 'smooth' });
+  }, 1100);
 }
 
 // PRODUCTOS
@@ -129,8 +155,10 @@ function actualizarCarrito() {
   `).join('');
 }
 
-// Mostrar productos him por defecto
-setCategoria('him');
+// Mostrar productos him por defecto SIN scroll
+btnHim = document.getElementById('btn-him');
+btnHim.classList.add('activo');
+renderProductos('him');
 // VALIDACIÓN DEL FORMULARIO
 document.getElementById('form-contacto').addEventListener('submit', (e) => {
   e.preventDefault();
